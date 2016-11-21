@@ -1,0 +1,93 @@
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+
+  <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="?attr/actionBarSize"
+      android:orientation="vertical"
+      android:paddingLeft="20dp"
+      android:paddingRight="20dp"
+      android:paddingTop="20dp"
+      >
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_uid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <EditText
+          android:id="@+id/input_uid"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_uid"
+          tools:text="spiderman"
+          android:text="spiderman"
+          />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <EditText
+          android:id="@+id/input_api_key"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_api_key"
+          tools:text="1c915e3b5d42d05136185030892fbb846c278927"
+          android:text="1c915e3b5d42d05136185030892fbb846c278927"
+          />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_app_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <EditText
+          android:id="@+id/input_app_id"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_app_id"
+          tools:text="2070"
+          android:text="2070"
+          />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/input_layout_pub0"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+      <EditText
+          android:id="@+id/input_pub0"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="@string/hint_pub0"
+          tools:text="pub0"
+          android:text="pub0"
+          />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_process"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:background="@color/colorPrimary"
+        android:text="@string/btn_process"
+        android:textColor="@android:color/white"
+        />
+
+  </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

@@ -1,0 +1,10 @@
+<resources>
+  <string name="app_name">fyber</string>
+  <string name="hint_uid">UID</string>
+  <string name="hint_api_key">API Key</string>
+  <string name="hint_app_id">APP ID</string>
+  <string name="btn_process">PROCESS</string>
+  <string name="hint_pub0">PUB0</string>
+  <string name="no_offers">No offers</string>
+  <string name="invalid_response_signature">Invalid Response signature</string>
+</resources>

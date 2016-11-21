@@ -1,0 +1,68 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+
+android {
+  compileSdkVersion 24
+  buildToolsVersion "25.0.0"
+
+  defaultConfig {
+    applicationId "io.abdellah.fyber"
+    minSdkVersion 9
+    targetSdkVersion 24
+    versionCode 1
+    versionName "1.0"
+    // Enabling multidex support.
+    multiDexEnabled true
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+    }
+  }
+
+  packagingOptions {
+    exclude 'META-INF/NOTICE' // will not include NOTICE file
+    exclude 'META-INF/LICENSE' // will not include LICENSE file
+    // as noted by @Vishnuvathsan you may also need to include
+    // variations on the file name. It depends on your dependencies.
+    // Some other common variations on notice and license file names
+    exclude 'META-INF/notice'
+    exclude 'META-INF/notice.txt'
+    exclude 'META-INF/license'
+    exclude 'META-INF/license.txt'  }
+
+}
+
+dependencies {
+  Map<String, String> dependencies = rootProject.ext.dependencies;
+
+  compile dependencies.appCompat
+  compile dependencies.cardView
+  compile dependencies.recyclerView
+  compile dependencies.retrofit
+  compile dependencies.retrofitConverterGson
+  compile dependencies.retrofitAdapterRxJava
+  compile dependencies.glide
+  compile dependencies.rxAndroid
+  compile dependencies.circleImageView
+  compile dependencies.palette
+  compile dependencies.design
+
+  compile dependencies.butterknife
+  compile dependencies.aptbutterknife
+
+  provided dependencies.autoparcel
+  apt dependencies.aptautoparcel
+
+  // https://mvnrepository.com/artifact/commons-codec/commons-codec
+  compile group: 'commons-codec', name: 'commons-codec', version: '1.7'
+
+  provided 'org.projectlombok:lombok:1.16.6'
+  apt 'org.projectlombok:lombok:1.16.6'
+
+
+  testCompile dependencies.jUnit
+  testCompile dependencies.mockito
+  testCompile dependencies.robolectric
+}
