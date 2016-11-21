@@ -7,4 +7,8 @@
   <string name="hint_pub0">PUB0</string>
   <string name="no_offers">No offers</string>
   <string name="invalid_response_signature">Invalid Response signature</string>
+  <string name="uid_required">User ID required</string>
+  <string name="api_key_required">API Key Required</string>
+  <string name="pub0_required">Pub0 required</string>
+  <string name="appid_required">Application ID Required</string>
 </resources>

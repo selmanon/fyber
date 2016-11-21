@@ -47,7 +47,7 @@ public class FybeOfferAPIFormActivity extends AppCompatActivity implements Fyber
 
   @Override public void navigateToListOffersActivity(ArrayList offers) {
     Intent navigateToOffers = new Intent(this, FyberOffersListActivity.class);
-    navigateToOffers.putExtra(OFFERS_EXTRA_KEY,offers);
+    navigateToOffers.putExtra(OFFERS_EXTRA_KEY, offers);
     startActivity(navigateToOffers);
   }
 
@@ -60,9 +60,37 @@ public class FybeOfferAPIFormActivity extends AppCompatActivity implements Fyber
   }
 
   @OnClick(R.id.btn_process) public void onClick() {
-    presenter.getFyberOfferAPI(inputAppId.getText().toString(), FYBER_SERVER_RESPONSE_FORMAT,
-        inputPub0.getText().toString(), ApiParamsUtility.getStringTimeStamp(),
-        inputUid.getText().toString(), getHashkey());
+    if (checkRequiredField()) {
+      presenter.getFyberOfferAPI(inputAppId.getText().toString(), FYBER_SERVER_RESPONSE_FORMAT,
+          inputPub0.getText().toString(), ApiParamsUtility.getStringTimeStamp(),
+          inputUid.getText().toString(), getHashkey());
+    }
+  }
+
+  private boolean checkRequiredField() {
+    boolean isFilled = true;
+
+    if (inputAppId.getText().toString().length() == 0) {
+      inputAppId.setError(getString(R.string.appid_required));
+      isFilled = false;
+    }
+
+    if (inputApiKey.getText().toString().length() == 0) {
+      inputApiKey.setError(getString(R.string.api_key_required));
+      isFilled = false;
+    }
+
+    if (inputPub0.getText().toString().length() == 0) {
+      inputPub0.setError(getString(R.string.pub0_required));
+      isFilled = false;
+    }
+
+    if (inputUid.getText().toString().length() == 0) {
+      inputUid.setError(getString(R.string.uid_required));
+      isFilled = false;
+    }
+
+    return isFilled;
   }
 
   private String getHashkey() {
