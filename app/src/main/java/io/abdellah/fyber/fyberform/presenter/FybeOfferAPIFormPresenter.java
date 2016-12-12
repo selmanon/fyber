@@ -62,19 +62,24 @@ public class FybeOfferAPIFormPresenter implements BasePresenter<FyberOfferAPIMvp
 
                      @Override public void onNext(Response<ResponseBody> fyberOffersResponse) {
                        String responseBody = null;
-                       try {
-                          responseBody = fyberOffersResponse.body().string();
-                       } catch (IOException e) {
-                         e.printStackTrace();
+
+                       if (fyberOffersResponse.body() != null) {
+                         try {
+                           responseBody = fyberOffersResponse.body().string();
+                         } catch (IOException e) {
+                           e.printStackTrace();
+                         }
                        }
+
                        if (fyberOffersResponse.code() == HttpURLConnection.HTTP_OK) {
-                         if (!isValidSignature(fyberOffersResponse,responseBody)) {
+                         if (!isValidSignature(fyberOffersResponse, responseBody)) {
                            fyberOfferAPIMvpView.processFyberOfferAPIFailed(fyberOfferAPIMvpView.getContext()
                                .getString(R.string.invalid_response_signature));
                          } else {
-                           final FyberOffers offersData = new GsonBuilder().create().fromJson(responseBody, FyberOffers.class);
-                            fyberOfferAPIMvpView.navigateToListOffersActivity(
-                              new ArrayList<Offers>(Arrays.asList(offersData.getOffers())));
+                           final FyberOffers offersData =
+                               new GsonBuilder().create().fromJson(responseBody, FyberOffers.class);
+                           fyberOfferAPIMvpView.navigateToListOffersActivity(
+                               new ArrayList<Offers>(Arrays.asList(offersData.getOffers())));
                          }
                        } else {
                          fyberOfferAPIMvpView.processFyberOfferAPIFailed(fyberOffersResponse.message());
@@ -85,11 +90,11 @@ public class FybeOfferAPIFormPresenter implements BasePresenter<FyberOfferAPIMvp
         );
   }
 
-  private boolean isValidSignature(Response<ResponseBody> fyberOffersResponse,String responseBody) {
+  private boolean isValidSignature(Response<ResponseBody> fyberOffersResponse,
+      String responseBody) {
     String signatureHash = fyberOffersResponse.headers()
         .get(SIGNATURE_HEADER_FIELD);  // Security check for the signature
-    String apiBodyResponseAndApi =
-        responseBody.concat(ApiParamsUtility.API_KEY);
+    String apiBodyResponseAndApi = responseBody.concat(ApiParamsUtility.API_KEY);
     String apiBodyResponseAndApiKeyHash =
         new String(Hex.encodeHex(DigestUtils.sha1(apiBodyResponseAndApi)));
     return signatureHash.equals(apiBodyResponseAndApiKeyHash);
