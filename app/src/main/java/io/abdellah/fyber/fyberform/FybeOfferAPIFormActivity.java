@@ -68,29 +68,28 @@ public class FybeOfferAPIFormActivity extends AppCompatActivity implements Fyber
   }
 
   private boolean checkRequiredField() {
-    boolean isFilled = true;
 
     if (inputAppId.getText().toString().length() == 0) {
       inputAppId.setError(getString(R.string.appid_required));
-      isFilled = false;
+      return false;
     }
 
     if (inputApiKey.getText().toString().length() == 0) {
       inputApiKey.setError(getString(R.string.api_key_required));
-      isFilled = false;
+      return false;
     }
 
     if (inputPub0.getText().toString().length() == 0) {
       inputPub0.setError(getString(R.string.pub0_required));
-      isFilled = false;
+      return false;
     }
 
     if (inputUid.getText().toString().length() == 0) {
       inputUid.setError(getString(R.string.uid_required));
-      isFilled = false;
+      return false;
     }
 
-    return isFilled;
+    return true;
   }
 
   private String getHashkey() {
