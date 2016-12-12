@@ -13,6 +13,8 @@ android {
     versionName "1.0"
     // Enabling multidex support.
     multiDexEnabled true
+
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
     release {
@@ -55,6 +57,7 @@ dependencies {
   provided dependencies.autoparcel
   apt dependencies.aptautoparcel
 
+
   // https://mvnrepository.com/artifact/commons-codec/commons-codec
   compile group: 'commons-codec', name: 'commons-codec', version: '1.7'
 
@@ -62,7 +65,10 @@ dependencies {
   apt 'org.projectlombok:lombok:1.16.6'
 
 
-  testCompile dependencies.jUnit
-  testCompile dependencies.mockito
-  testCompile dependencies.robolectric
+  androidTestCompile dependencies.annotations
+  androidTestCompile dependencies.espressoRunner
+  androidTestCompile dependencies.espressoCore
+  androidTestCompile dependencies.espressoIntents
+
+  testCompile dependencies.junit
 }
