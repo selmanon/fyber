@@ -120,23 +120,4 @@ import static org.hamcrest.Matchers.anyOf;
       }
     };
   }
-
-  private <T> Matcher<T> first(final Matcher<T> matcher) {
-    return new BaseMatcher<T>() {
-      boolean isFirst = true;
-
-      @Override public boolean matches(final Object item) {
-        if (isFirst && matcher.matches(item)) {
-          isFirst = false;
-          return true;
-        }
-
-        return false;
-      }
-
-      @Override public void describeTo(final Description description) {
-        description.appendText("should return first matching item");
-      }
-    };
-  }
 }
