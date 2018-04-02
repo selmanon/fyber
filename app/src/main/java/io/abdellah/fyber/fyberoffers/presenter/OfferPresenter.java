@@ -5,6 +5,8 @@ import io.abdellah.fyber.base.BasePresenter;
 import io.abdellah.fyber.data.model.Offers;
 import io.abdellah.fyber.fyberoffers.view.OfferMvpView;
 import java.util.ArrayList;
+import java.util.List;
+
 import rx.Subscription;
 
 /**
@@ -26,8 +28,8 @@ public class OfferPresenter implements BasePresenter<OfferMvpView> {
     if (subscription != null) subscription.unsubscribe();
   }
 
-  public void showFyberOfferAPI(ArrayList<Offers> offers) {
-    if (offers.size() > 0) {
+  public void showFyberOfferAPI(List<Offers> offers) {
+    if (!offers.isEmpty()) {
       offerMvpView.showOffers(offers);
     } else {
       offerMvpView.showMessage(R.string.no_offers);
