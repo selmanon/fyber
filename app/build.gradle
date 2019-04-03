@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.neenbedankt.android-apt'
 
 android {
-  compileSdkVersion 24
-  buildToolsVersion "25.0.0"
+  compileSdkVersion 26
+  buildToolsVersion '28.0.3'
 
   defaultConfig {
     applicationId "io.abdellah.fyber"
     minSdkVersion 9
-    targetSdkVersion 24
+    targetSdkVersion 26
     versionCode 1
     versionName "1.0"
     // Enabling multidex support.
@@ -39,36 +38,33 @@ android {
 dependencies {
   Map<String, String> dependencies = rootProject.ext.dependencies;
 
-  compile dependencies.appCompat
-  compile dependencies.cardView
-  compile dependencies.recyclerView
-  compile dependencies.retrofit
-  compile dependencies.retrofitConverterGson
-  compile dependencies.retrofitAdapterRxJava
-  compile dependencies.glide
-  compile dependencies.rxAndroid
-  compile dependencies.circleImageView
-  compile dependencies.palette
-  compile dependencies.design
+  implementation dependencies.appCompat
+  implementation dependencies.cardView
+  implementation dependencies.recyclerView
+  implementation dependencies.retrofit
+  implementation dependencies.retrofitConverterGson
+  implementation dependencies.retrofitAdapterRxJava
+  implementation dependencies.glide
+  implementation dependencies.rxAndroid
+  implementation dependencies.circleImageView
+  implementation dependencies.palette
+  implementation dependencies.design
 
-  compile dependencies.butterknife
-  compile dependencies.aptbutterknife
+  implementation dependencies.butterknife
+  implementation dependencies.aptbutterknife
 
-  provided dependencies.autoparcel
-  apt dependencies.aptautoparcel
+  compileOnly dependencies.autoparcel
+  annotationProcessor dependencies.aptautoparcel
 
 
   // https://mvnrepository.com/artifact/commons-codec/commons-codec
-  compile group: 'commons-codec', name: 'commons-codec', version: '1.7'
+  implementation group: 'commons-codec', name: 'commons-codec', version: '1.7'
 
-  provided 'org.projectlombok:lombok:1.16.6'
-  apt 'org.projectlombok:lombok:1.16.6'
+  compileOnly 'org.projectlombok:lombok:1.16.6'
+  annotationProcessor 'org.projectlombok:lombok:1.16.6'
 
 
-  androidTestCompile dependencies.annotations
-  androidTestCompile dependencies.espressoRunner
-  androidTestCompile dependencies.espressoCore
-  androidTestCompile dependencies.espressoIntents
 
-  testCompile dependencies.junit
+
+  testImplementation dependencies.junit
 }
